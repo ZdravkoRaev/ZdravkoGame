@@ -1,0 +1,19 @@
+-Main menu
+|-credits
+|-controls
+|-settings
+|-scores
+|-exit
+|-play
+||-continue
+||-New Game
+||-Level Select
+|||-Levels
+
+
+-Level
+up right:pause, can be clicked or opened with esc
+-Pause screen
+|-settings
+|-exit Level
+|-exit game

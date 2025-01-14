@@ -1,0 +1,16 @@
+visuals:
+front layer
+back layer
+
+#0 air
+#1 wall
+#2 breakabell wall
+#3 target(breakabell wall that needs to be hit to win)
+#4 spike
+#5 mindless enemy
+#6 enemy following player
+#7 flying enemy following player
+#8 shooting enemy
+#9 flying shooting enemy
+
+#15 player
