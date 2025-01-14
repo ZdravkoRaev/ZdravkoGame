@@ -44,7 +44,7 @@ def main():
                     y=200
                     offset=150
                     path1=os.getcwd()
-                    fullPath=os.path.join(path1,"homework7","levels","mainStory.txt")
+                    fullPath=os.path.join(path1,"levels","mainStory.txt")
                     with open(fullPath, "r") as jsonfile:
                         json1 = json.load(jsonfile)
                     if str(i+1) in json1:                    
@@ -58,7 +58,7 @@ def main():
                     y=200
                     offset=150
                     path1=os.getcwd()
-                    fullPath=os.path.join(path1,"homework7","levels","mainStory.txt")
+                    fullPath=os.path.join(path1,"levels","mainStory.txt")
                     with open(fullPath, "r") as jsonfile:
                         json1 = json.load(jsonfile)
                     if str(i+1) in json1:

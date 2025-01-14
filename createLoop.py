@@ -10,6 +10,7 @@ import os
 def run(theLevel: Level, screen):
     pressed=(0,0)
     cursorState=1
+
     state=0
     clock = pygame.time.Clock()
     running=True
@@ -37,7 +38,7 @@ def run(theLevel: Level, screen):
         if state==100:
             running=False
             path1=os.getcwd()
-            fullPath=os.path.join(path1,"homework7","levels","mainStory.txt")
+            fullPath=os.path.join(path1,"levels","mainStory.txt")
             with open(fullPath, "r") as jsonfile:
                 json1 = json.load(jsonfile)  
             for i in range(20):

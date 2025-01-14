@@ -5,7 +5,7 @@ from levelCreator import level
 def loadLevelFromJson(levelID):
     level1=level.Level()
     path1=os.getcwd()
-    fullPath=os.path.join(path1,"homework7","levels","mainStory.txt")
+    fullPath=os.path.join(path1,"levels","mainStory.txt")
     with open(fullPath, "r") as jsonfile:
         json1 = json.load(jsonfile)
         if not str(levelID) in json1:
@@ -19,10 +19,11 @@ def loadLevelFromJson(levelID):
 
 
 
+
     return level1
 def deleteLevelFromJson(levelID):
     path1=os.getcwd()
-    fullPath=os.path.join(path1,"homework7","levels","mainStory.txt")
+    fullPath=os.path.join(path1,"levels","mainStory.txt")
     with open(fullPath, "r") as jsonfile:
         json1 = json.load(jsonfile)
         if not str(levelID) in json1:
@@ -36,7 +37,7 @@ def deleteLevelFromJson(levelID):
 
 def addLevelToJson(level1:level.Level,levelID):
     path1=os.getcwd()
-    fullPath=os.path.join(path1,"homework7","levels","mainStory.txt")
+    fullPath=os.path.join(path1,"levels","mainStory.txt")
     with open(fullPath, "r") as jsonfile:
 
         json1 = json.load(jsonfile)
@@ -49,7 +50,7 @@ def addLevelToJson(level1:level.Level,levelID):
                 write.write(json.dumps(json1))
 def addScoreToJson(levelID:int, name:str,score:int):
     path1=os.getcwd()
-    fullPath=os.path.join(path1,"homework7","levels","scores.txt")
+    fullPath=os.path.join(path1,"levels","scores.txt")
     with open(fullPath, "r") as jsonfile:
         json1 = json.load(jsonfile)
         if str(levelID) in json1 and name in json1[str(levelID)]:
@@ -64,7 +65,7 @@ def addScoreToJson(levelID:int, name:str,score:int):
             write.write(json.dumps(json1))
 def loadScores():
     path1=os.getcwd()
-    fullPath=os.path.join(path1,"homework7","levels","scores.txt")
+    fullPath=os.path.join(path1,"levels","scores.txt")
     json1=dict()
     with open(fullPath, "r") as jsonfile:
         json1 = json.load(jsonfile)
