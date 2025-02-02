@@ -27,9 +27,6 @@ def main():
         if state!=100:
             inCreator=False
         if not inLevel and not inCreator:
-
-
-
             bg.fill((183, 201, 226))
             clock.tick(60)
             mouse_x, mouse_y = pygame.mouse.get_pos()

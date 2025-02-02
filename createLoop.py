@@ -16,7 +16,6 @@ def run(theLevel: Level, screen):
     running=True
     while running:
         clock.tick(60)
-        keys=pygame.key.get_pressed()
         mousePos=list(pygame.mouse.get_pos())
         mousePress=pygame.mouse.get_pressed()[0]
         state=renderButton(Button(1200,850,300,50,"SaveLevel",(100,100,100),(150,150,150),(255,0,0),100),screen,state,pressed,mousePos[0], mousePos[1])

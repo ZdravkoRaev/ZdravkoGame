@@ -20,6 +20,7 @@ def run(theLevel: Level, screen):
     player.base.boundingBox.x=200
     player.base.boundingBox.y=200
     while running:
+        clock.tick(60)
         keys=pygame.key.get_pressed()
         mouse=pygame.mouse.get_pressed()
         mouse_pos=list(pygame.mouse.get_pos())
@@ -55,11 +56,25 @@ def run(theLevel: Level, screen):
             for item in collisions:
                 if theLevel.objects[int(item.x/25)][int(item.y/25)]==2:
                     theLevel.objects[int(item.x/25)][int(item.y/25)]=0
-        clock.tick(60)
+
         player=dirCollysions(player,theLevel)
 
         if player.base.y_vel<10:
             player.base.y_vel+=1
+
+
+        player_wall.base.boundingBox.x=player.base.boundingBox.x-1
+        player_wall.base.boundingBox.y=player.base.boundingBox.y+1
+        wall_stuff=collysions(player_wall.base.boundingBox,theLevel)
+        if   player.base.y_vel>2 and wall_stuff:
+            player.base.y_vel=2
+            for item in wall_stuff:
+                if item.x<player.base.boundingBox.x:
+                    player.base.wallLeft=True
+                else:
+                    player.base.wallRight=True
+
+
         pos=mouse_pos
         pos[0]=int((pos[0]-pos[0]%25)/25)
         pos[1]=int((pos[1]-pos[1]%25)/25)
@@ -76,11 +91,6 @@ def run(theLevel: Level, screen):
         if  keys[pygame.K_5]:
             theLevel.objects[mouse_pos[0]][mouse_pos[1]]=5
 
-        for event in pygame.event.get():
-            if event.type==pygame.QUIT:
-                running=False
-        if not enemies:
-            running=False
 
         x_camera=player.base.boundingBox.x*2+25+(pygame.mouse.get_pos()[0]-800)/8
         y_camera=player.base.boundingBox.y*2+50+(pygame.mouse.get_pos()[1]-450)/16
@@ -94,14 +104,13 @@ def run(theLevel: Level, screen):
         elif y_camera>1350:
             y_camera=1350
         screen.blit(surface,(-x_camera+800,-y_camera+450))
-        player_wall.base.boundingBox.x=player.base.boundingBox.x-1
-        player_wall.base.boundingBox.y=player.base.boundingBox.y+1
-        wall_stuff=collysions(player_wall.base.boundingBox,theLevel)
-        if   player.base.y_vel>2 and wall_stuff:
-            player.base.y_vel=2
-            for item in wall_stuff:
-                if item.x<player.base.boundingBox.x:
-                    player.base.wallLeft=True
-                else:
-                    player.base.wallRight=True
+
+
+
+        for event in pygame.event.get():
+            if event.type==pygame.QUIT:
+                running=False
+        if not enemies:
+            running=False
+
     return 0
