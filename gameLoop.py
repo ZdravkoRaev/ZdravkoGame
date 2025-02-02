@@ -4,9 +4,9 @@ from enteties.player.player import Player
 from enteties.player.keysToActions import move
 from drawing import draw
 from drawing import drawStart
-from enteties.collisionsWithLevel import collysions
-from enteties.directionalColisions import dirCollysions
-from enteties.collisionsWithEnteties import collisionsEnteties
+from enteties.collisions.collisionsWithLevel import collysions
+from enteties.collisions.directionalColisions import dirCollysions
+from enteties.collisions.collisionsWithEnteties import collisionsEnteties
 from enteties.enemies.enemyAI.sorter import sortAI
 def run(theLevel: Level, screen):
     theLevel.objects[0][0]=5
