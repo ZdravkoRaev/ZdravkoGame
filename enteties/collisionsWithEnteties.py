@@ -1,6 +1,6 @@
-from enteties.basicEntety import BasicEntety
+from enteties.basicEntety import TempalteEntety
 
-def collisionsEnteties(entety1 :BasicEntety,allEnteties):
+def collisionsEnteties(entety1 :TempalteEntety,allEnteties):
     collisEnt=list()
     for item in allEnteties:
         if item is not entety1:

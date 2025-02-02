@@ -1,8 +1,8 @@
 from enteties.collisionsWithLevel import collysions
 from enteties.player import Player
-from enteties.basicEntety import BasicEntety
+from enteties.basicEntety import TempalteEntety
 from enteties.enemies.projectile import Projectile
-def dirCollysions(entety : BasicEntety,level):
+def dirCollysions(entety : TempalteEntety,level):
     entety.base.wallBelow=False
     entety.base.wallLeft=False
     entety.base.wallAbove=False

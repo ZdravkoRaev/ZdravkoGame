@@ -1,7 +1,7 @@
 import pygame
-from enteties.basicEntety import BasicEntety
+from enteties.basicEntety import TempalteEntety
 
-def collysions(entety : BasicEntety,level):
+def collysions(entety : TempalteEntety,level):
     collisionsWithLevel=list()
     for x in range(6):
         for y in range(6):

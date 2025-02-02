@@ -1,3 +1,0 @@
-0 - main menu
-1 - mainStory
-2 - custmo levels
