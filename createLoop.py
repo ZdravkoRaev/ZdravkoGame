@@ -25,6 +25,7 @@ def run(theLevel: Level, screen):
         cursorState=renderButton(Button(400,850,50,50,"En1",(100,100,100),(150,150,150),(255,0,0),3),screen,cursorState,pressed,mousePos[0], mousePos[1])
         cursorState=renderButton(Button(500,850,50,50,"En2",(100,100,100),(150,150,150),(255,0,0),4),screen,cursorState,pressed,mousePos[0], mousePos[1])
         cursorState=renderButton(Button(600,850,50,50,"Proj",(100,100,100),(150,150,150),(255,0,0),5),screen,cursorState,pressed,mousePos[0], mousePos[1])
+        cursorState=renderButton(Button(700,850,50,50,"Target",(100,100,100),(150,150,150),(255,0,0),6),screen,cursorState,pressed,mousePos[0], mousePos[1])
         mousePos[0]=int((mousePos[0]-mousePos[0]%25)/25)
         mousePos[1]=int((mousePos[1]-mousePos[1]%25)/25)
         if mousePress and mousePos[0]>=2 and mousePos[0]<=61 and mousePos[1]>=2 and mousePos[1]<=33:

@@ -19,6 +19,9 @@ def draw(screen,level):
             if level.objects[x][y]==5:
                 a=pygame.Rect((x*25,y*25,25,25))
                 pygame.draw.rect(screen,(255,255,0),a)
+            if level.objects[x][y]==6:
+                a=pygame.Rect((x*25,y*25,25,25))
+                pygame.draw.rect(screen,(200,200,200),a)
 
     for x in range(64):
         for y in range(36):

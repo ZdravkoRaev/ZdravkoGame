@@ -49,7 +49,7 @@ def main():
                 state=buttonCreator.renderButton(button1.Button(100,770,300,100,"Retrun to main menu",(100,100,100),(150,150,150),(255,0,0),0),bg,state,pressed,mouse_x, mouse_y )
                 state=buttonCreator.renderButton(button1.Button(1200,770,300,100,"Enter delete Mode",(100,100,100),(150,150,150),(255,0,0),11),bg,state,pressed,mouse_x, mouse_y )
             elif state==11:
-                deletion=0
+                deletion=-1
                 for i in range(20):
                     x=450
                     y=200
@@ -60,7 +60,7 @@ def main():
                         json1 = json.load(jsonfile)
                     if str(i+1) in json1:
                         deletion=buttonCreator.renderButton(button1.Button(x+i%5*offset,y+int(i/5)*offset,100,100,str(i+1),(100,100,100),(150,150,150),(255,0,0),i),bg,deletion,pressed,mouse_x, mouse_y )
-                if deletion!=0:
+                if deletion!=-1:
                     deleteLevelFromJson(str(deletion+1))
                     
                     pass

@@ -5,6 +5,7 @@ from enteties.player.player import Player
 from enteties.enemies import basicFlier
 from enteties.enemies import shootyFlier
 from enteties.enemies import projectile
+from enteties.enemies import target
 def drawStart(screen,player : Player ,level,enemies):
     pygame.display.update()
     screen.fill((0,0,0))
@@ -49,6 +50,12 @@ def drawStart(screen,player : Player ,level,enemies):
                 enemy.base.boundingBox.y=y*25
                 enemies.append(enemy)
                 level.objects[x][y]=0
+            if level.objects[x][y]==6:
+                enemy=target.Target()
+                enemy.base.boundingBox.x=x*25
+                enemy.base.boundingBox.y=y*25
+                enemies.append(enemy)
+                level.objects[x][y]=0
 
     for x in range(64):
         for y in range(36):
@@ -73,6 +80,8 @@ def draw(screen,player : Player ,level,enemies):
             color=(255,0,255)
         if item.ID==100:
             color=(255,255,0)
+        if item.ID==0:
+            color=(200,200,200)
         pygame.draw.rect(screen,color,item.base.boundingBox)
 
     for x in range(64):

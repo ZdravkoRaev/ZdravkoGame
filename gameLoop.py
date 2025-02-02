@@ -9,7 +9,6 @@ from enteties.collisions.directionalColisions import dirCollysions
 from enteties.collisions.collisionsWithEnteties import collisionsEnteties
 from enteties.enemies.enemyAI.sorter import sortAI
 def run(theLevel: Level, screen):
-    theLevel.objects[0][0]=5
     x_camera=0
     y_camera=0
     clock = pygame.time.Clock()
