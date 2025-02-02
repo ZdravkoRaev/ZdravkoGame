@@ -7,7 +7,7 @@ from drawing import draw
 from enteties.collisionsWithLevel import collysions
 from enteties.directionalColisions import dirCollysions
 from enteties.collisionsWithEnteties import collisionsEnteties
-from enteties.enemyAI.sorter import sortAI
+from enteties.enemies.enemyAI.sorter import sortAI
 def run(theLevel: Level, screen):
     theLevel.objects[0][0]=5
     x_camera=0

@@ -1,4 +1,4 @@
-from enteties.player import Player
+from enteties.player.player import Player
 def moveRight(player : Player):
     if player.base.wallBelow:
         if player.base.x_vel<6:

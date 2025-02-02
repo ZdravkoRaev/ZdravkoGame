@@ -1,4 +1,4 @@
-from enteties.player import Player
+from enteties.player.player import Player
 def jump1(player : Player):
     if player.base.wallBelow:
         player.base.y_vel=-16

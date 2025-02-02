@@ -1,5 +1,5 @@
-from enteties.playerActions.dash import dash
-from enteties.player import Player
+from enteties.player.playerActions.dash import dash
+from enteties.player.player import Player
 def attack(player : Player,mouse,mousePos):
     player.isAttacking=True
     player=dash(player,mouse,mousePos)

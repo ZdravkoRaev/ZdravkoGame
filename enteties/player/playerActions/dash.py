@@ -1,5 +1,5 @@
 import math
-from enteties.player import Player
+from enteties.player.player import Player
 def dash(player : Player,mouse,mousePos):
     if player.canDash:
         x=mousePos[0]-player.base.boundingBox.x

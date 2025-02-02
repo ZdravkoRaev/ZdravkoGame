@@ -1,5 +1,5 @@
 import math
-from enteties.player import Player
+from enteties.player.player import Player
 def hurtPos(player : Player,mousePos):   
     player.attackCooldown-=1
     x=mousePos[0]-player.base.boundingBox.x

@@ -1,4 +1,4 @@
-from enteties.player import Player
+from enteties.player.player import Player
 def dashing(player : Player):
 
     player.base.y_vel-=1

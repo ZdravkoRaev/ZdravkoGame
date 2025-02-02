@@ -1,12 +1,12 @@
 
 from pygame import K_d,K_a,K_SPACE
-from enteties.player import Player
-from enteties.playerActions.left import moveLeft
-from enteties.playerActions.right import moveRight
-from enteties.playerActions.jumping import jump1
-from enteties.playerActions.attack import attack
-from enteties.playerActions.isDashing import dashing
-from enteties.playerActions.hurtboxPosition import hurtPos
+from enteties.player.player import Player
+from enteties.player.playerActions.left import moveLeft
+from enteties.player.playerActions.right import moveRight
+from enteties.player.playerActions.jumping import jump1
+from enteties.player.playerActions.attack import attack
+from enteties.player.playerActions.isDashing import dashing
+from enteties.player.playerActions.hurtboxPosition import hurtPos
 def move(player : Player,keys,mouse,mousePos):
     if player.base.wallBelow:
         player.base.x_vel=0
