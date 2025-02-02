@@ -1,5 +1,5 @@
 import pygame
-from enteties.basicEntety import TempalteEntety
+from enteties.templateEntety import TempalteEntety
 
 def collysions(entety : TempalteEntety,level):
     collisionsWithLevel=list()
