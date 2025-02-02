@@ -1,7 +1,7 @@
 
 #To do: make it only draw, not also update enemies
 import pygame
-from enteties.player import Player
+from enteties.player.player import Player
 from enteties.enemies import basicFlier
 from enteties.enemies import shootyFlier
 from enteties.enemies import projectile

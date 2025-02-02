@@ -1,6 +1,6 @@
 #stands in place in the air and shoots the player
 from enteties.baseEntety import BaseEntety
-from enteties.player import Player
+from enteties.player.player import Player
 from enteties.enemies.projectile import Projectile
 from math import sqrt
 class ShootyFlier():

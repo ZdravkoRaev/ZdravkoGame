@@ -35,4 +35,3 @@ def renderButton(button1: Button, bg, state : int, pressed,mouse_x: int,mouse_y:
             bg.blit(button_text, button_text_rect)
             return button1.actionID
     return state
-

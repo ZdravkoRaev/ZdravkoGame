@@ -1,8 +1,8 @@
 import pygame
 from levelCreator.level import Level
-from enteties.player import Player
-from enteties.playerWallJump import PlayerWallJump
-from enteties.keysToActions import move
+from enteties.player.player import Player
+from enteties.player.playerWallJump import PlayerWallJump
+from enteties.player.keysToActions import move
 from drawing import draw
 from enteties.collisionsWithLevel import collysions
 from enteties.directionalColisions import dirCollysions
