@@ -1,9 +1,9 @@
 import pygame
 from levelCreator.level import Level
 from enteties.player.player import Player
-from enteties.player.playerWallJump import PlayerWallJump
 from enteties.player.keysToActions import move
 from drawing import draw
+from drawing import drawStart
 from enteties.collisionsWithLevel import collysions
 from enteties.directionalColisions import dirCollysions
 from enteties.collisionsWithEnteties import collisionsEnteties
@@ -14,21 +14,28 @@ def run(theLevel: Level, screen):
     y_camera=0
     clock = pygame.time.Clock()
     player=Player()
-    player_wall=PlayerWallJump()
     enemies=list()
     running=True
     player.base.boundingBox.x=200
     player.base.boundingBox.y=200
+    surface=screen.copy()
+    enemies=drawStart(surface,player,theLevel,enemies)
     while running:
         clock.tick(60)
+
+        #getting the player imput
         keys=pygame.key.get_pressed()
         mouse=pygame.mouse.get_pressed()
         mouse_pos=list(pygame.mouse.get_pos())
+
+        #converting the mouse pos to match the displayed image
         mouse_pos[0]=mouse_pos[0]/2-(-x_camera+800)/2
         mouse_pos[1]=mouse_pos[1]/2-(-y_camera+450)/2
+
+
         surface=screen.copy()
         surface.fill((100, 100, 100))
-        enemies=draw(surface,player,player_wall,theLevel,enemies)
+        draw(surface,player,theLevel,enemies)
         for item in enemies:
             if item.hp<=0:
                 enemies.remove(item)
@@ -56,16 +63,16 @@ def run(theLevel: Level, screen):
             for item in collisions:
                 if theLevel.objects[int(item.x/25)][int(item.y/25)]==2:
                     theLevel.objects[int(item.x/25)][int(item.y/25)]=0
-
+        #gravity
         player=dirCollysions(player,theLevel)
-
         if player.base.y_vel<10:
             player.base.y_vel+=1
-
-
-        player_wall.base.boundingBox.x=player.base.boundingBox.x-1
-        player_wall.base.boundingBox.y=player.base.boundingBox.y+1
-        wall_stuff=collysions(player_wall.base.boundingBox,theLevel)
+        
+        #making wallSlides/wallJumps better
+        
+        player.wallJumpBox.boundingBox.x=player.base.boundingBox.x-1
+        player.wallJumpBox.boundingBox.y=player.base.boundingBox.y+1
+        wall_stuff=collysions(player.wallJumpBox.boundingBox,theLevel)
         if   player.base.y_vel>2 and wall_stuff:
             player.base.y_vel=2
             for item in wall_stuff:
@@ -74,27 +81,12 @@ def run(theLevel: Level, screen):
                 else:
                     player.base.wallRight=True
 
-
-        pos=mouse_pos
-        pos[0]=int((pos[0]-pos[0]%25)/25)
-        pos[1]=int((pos[1]-pos[1]%25)/25)
-
-        if  keys[pygame.K_1]:
-          if pos[0]>=0 and pos[0]<=63 and pos[1]>=0 and pos[1]<=35: 
-                theLevel.objects[mouse_pos[0]][mouse_pos[1]]=1
-        if  keys[pygame.K_2]:
-            theLevel.objects[mouse_pos[0]][mouse_pos[1]]=2
-        if  keys[pygame.K_3]:
-            theLevel.objects[mouse_pos[0]][mouse_pos[1]]=3
-        if  keys[pygame.K_4]:
-            theLevel.objects[mouse_pos[0]][mouse_pos[1]]=4
-        if  keys[pygame.K_5]:
-            theLevel.objects[mouse_pos[0]][mouse_pos[1]]=5
-
-
+        #camera controls
         x_camera=player.base.boundingBox.x*2+25+(pygame.mouse.get_pos()[0]-800)/8
         y_camera=player.base.boundingBox.y*2+50+(pygame.mouse.get_pos()[1]-450)/16
         surface=pygame.transform.scale(surface, (screen.get_rect().size[0]*2,screen.get_rect().size[1]*2))
+
+        #making sure the camera doesn't show stuff out of the level
         if x_camera<800:
             x_camera=800
         elif x_camera>2400:
@@ -103,8 +95,8 @@ def run(theLevel: Level, screen):
             y_camera=450
         elif y_camera>1350:
             y_camera=1350
+        
         screen.blit(surface,(-x_camera+800,-y_camera+450))
-
 
 
         for event in pygame.event.get():

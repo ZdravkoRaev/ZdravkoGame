@@ -5,10 +5,9 @@ from enteties.player.player import Player
 from enteties.enemies import basicFlier
 from enteties.enemies import shootyFlier
 from enteties.enemies import projectile
-def draw(screen,player : Player,playerwall ,level,enemies):
+def drawStart(screen,player : Player ,level,enemies):
     pygame.display.update()
     screen.fill((0,0,0))
-    pygame.draw.rect(screen,(255,255,255),playerwall.base.boundingBox)
     if player.hp<=0:
         pygame.draw.rect(screen,(0,100,0),player.base.boundingBox)
     else:
@@ -51,6 +50,46 @@ def draw(screen,player : Player,playerwall ,level,enemies):
                 enemies.append(enemy)
                 level.objects[x][y]=0
 
+    for x in range(64):
+        for y in range(36):
+            pygame.draw.rect(screen,(255,255,255),pygame.Rect((x*25,y*25,1,1)))
+    if player.isAttacking:
+        pygame.draw.rect(screen,(255,0,0),player.hurtbox)
+    return enemies
+
+def draw(screen,player : Player ,level,enemies):
+    pygame.display.update()
+    screen.fill((0,0,0))
+    if player.hp<=0:
+        pygame.draw.rect(screen,(0,100,0),player.base.boundingBox)
+    else:
+        pygame.draw.rect(screen,(0,255,0),player.base.boundingBox)
+    
+    for item in enemies:
+        color=(255,255,255)
+        if item.ID==1:
+            color=(255,0,0)
+        if item.ID==2:
+            color=(255,0,255)
+        if item.ID==100:
+            color=(255,255,0)
+        pygame.draw.rect(screen,color,item.base.boundingBox)
+
+    for x in range(64):
+        for y in range(36):
+            if level.objects[x][y]==1:
+                a=pygame.Rect((x*25,y*25,25,25))
+                pygame.draw.rect(screen,(0,0,255),a)
+            if level.objects[x][y]==2:
+                a=pygame.Rect((x*25,y*25,25,25))
+                pygame.draw.rect(screen,(0,255,255),a)
+            if level.objects[x][y]==3:
+                level.objects[x][y]=0
+            if level.objects[x][y]==4:
+                level.objects[x][y]=0
+            if level.objects[x][y]==5:
+                level.objects[x][y]=0
+
                 
 
 
@@ -59,4 +98,3 @@ def draw(screen,player : Player,playerwall ,level,enemies):
             pygame.draw.rect(screen,(255,255,255),pygame.Rect((x*25,y*25,1,1)))
     if player.isAttacking:
         pygame.draw.rect(screen,(255,0,0),player.hurtbox)
-    return enemies
