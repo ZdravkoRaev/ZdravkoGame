@@ -4,8 +4,8 @@ import os
 from menus import buttonCreator
 from menus import button as button1
 from levelCreator.level import Level
-import createLoop
-import runLevel
+import create_loop
+import run_level
 
 from levels.converter import deleteLevelFromJson
 def main():
@@ -84,10 +84,10 @@ def main():
             pressed = (pressed[1],pygame.mouse.get_pressed()[0])
             if state>100 and state<121:
                 inLevel=True
-                state=runLevel.runLevel(state-100,bg)
+                state=run_level.runLevel(state-100,bg)
             elif state==100:
                 inCreator=True
-                state=createLoop.run(Level(),bg)
+                state=create_loop.run(Level(),bg)
 
 
             for event in pygame.event.get():

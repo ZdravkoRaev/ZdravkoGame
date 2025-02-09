@@ -1,7 +1,7 @@
-import gameLoop
+import game_loop
 from levels import converter
 def runLevel(levelID : int,screen):
     level=converter.loadLevelFromJson(levelID)
-    state=gameLoop.run(level,screen)
+    state=game_loop.run(level,screen)
     return state
 
