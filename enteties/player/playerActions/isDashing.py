@@ -5,7 +5,7 @@ def dashing(player : Player):
     player.attackLenght-=1
     if player.attackLenght==0:
         player.isDashing=False
-        player.attackLenght=3
+        player.attackLenght=6
         if player.base.x_vel>6:
             player.base.x_vel=6
         if player.base.x_vel<-6:

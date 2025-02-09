@@ -22,7 +22,7 @@ def move(player : Player,keys,mouse,mousePos):
         player.attackLenght-=1
         if player.attackLenght<=0:
             player.isAttacking=False
-            player.attackLenght=5
+            player.attackLenght=6
             player.attackCooldown=40
     if player.isDashing:
         player=dashing(player)

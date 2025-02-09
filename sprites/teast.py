@@ -7,7 +7,6 @@ while True:
     clock.tick(60)
     surface.fill((110,110,110))
     drawSprite.draw(0,100,100,surface)
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
