@@ -1,7 +1,9 @@
+"""creates button by giver position, text and returning state"""
 import pygame
 from menus.button import Button
 
 def renderButton(button1: Button, bg, state : int, pressed,mouse_x: int,mouse_y: int):
+    """function"""
     pygame.font.init()
     font1 = pygame.font.Font(None, 24)
     button_text = font1.render(button1.text, True, (0, 0, 0))
