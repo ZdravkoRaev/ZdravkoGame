@@ -32,6 +32,10 @@ class Player:
         self.jump1=pygame.image.load(os.path.join("sprites","player","jumping","jump1.png")).convert_alpha()
         self.jump2=pygame.image.load(os.path.join("sprites","player","jumping","jump2.png")).convert_alpha()
 
+        self.slide0=pygame.image.load(os.path.join("sprites","player","wall_sliding","slide0.png")).convert_alpha()
+        self.slide1=pygame.image.load(os.path.join("sprites","player","wall_sliding","slide1.png")).convert_alpha()
+        self.slide2=pygame.image.load(os.path.join("sprites","player","wall_sliding","slide2.png")).convert_alpha()
+
     def ai(self):
         pass
     def sprites(self,frame : int):
@@ -60,12 +64,29 @@ class Player:
                 else:
                     wanted=self.stand3
         else:
-            if int(frame/6)%3==0:
-                wanted=self.jump0
-            elif int(frame/6)%3==1:
-                wanted=self.jump1
-            elif int(frame/6)%3==2:
-                wanted=self.jump2
+            if self.base.wall_left:
+                if int(frame/3)%3==0:
+                    return self.slide0
+                elif int(frame/3)%3==1:
+                    return self.slide1
+                else:
+                    return self.slide2
+            elif self.base.wall_right:
+                if int(frame/3)%3==0:
+                    wanted=self.slide0
+                elif int(frame/3)%3==1:
+                    wanted=self.slide1
+                else:
+                    wanted=self.slide2
+                wanted=pygame.transform.flip(wanted, True, False)
+                return wanted
+            else:
+                if int(frame/6)%3==0:
+                    wanted=self.jump0
+                elif int(frame/6)%3==1:
+                    wanted=self.jump1
+                elif int(frame/6)%3==2:
+                    wanted=self.jump2
 
         if self.base.x_vel<0:
             wanted = pygame.transform.flip(wanted, True, False)

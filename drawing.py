@@ -56,18 +56,8 @@ def draw(screen,player : Player ,level,enemies,frame:int):
 
 
     for item in enemies:
-        color=(255,255,255)
-        if item.id==1:
-            color=(255,0,0)
-            pygame.draw.rect(screen,color,item.base.bounding_box)
-        if item.id==2:
-            color=(255,0,255)
-            pygame.draw.rect(screen,color,item.base.bounding_box)
-        if item.id==100:
-            color=(255,255,0)
-            pygame.draw.rect(screen,color,item.base.bounding_box)
-        if item.id==0:
-            screen.blit(image,(item.base.bounding_box.x,item.base.bounding_box.y))
+        screen.blit(item.sprite(player),(item.base.bounding_box.x-8,item.base.bounding_box.y-12))
+
     for x in range(64):
         for y in range(36):
             if level.objects[x][y]==1:

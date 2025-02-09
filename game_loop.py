@@ -7,6 +7,7 @@ from drawing import draw
 from drawing import drawStart
 from enteties import collisions
 from enteties.enemies.enemyAI.sorter import sort_ai
+from levels.converter import add_score_to_json
 def run(level: Level, screen):
     """a"""
     x_camera=0
@@ -106,7 +107,16 @@ def run(level: Level, screen):
         for event in pygame.event.get():
             if event.type==pygame.QUIT: # pylint: disable=maybe-no-member
                 running=False
-        if not enemies:
-            running=False
+        
+        all_bullets=True
+        for item in enemies:
+            if item.id!=100:
+                all_bullets=False
 
+
+
+        if not enemies or all_bullets:
+            running=False
+    score=10000/frame*player.hp
+    add_score_to_json(1,"Zdravko",score)
     return 0

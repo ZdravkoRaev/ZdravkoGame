@@ -40,7 +40,7 @@ def add_level_to_json(level1:level.Level,level_id):
     with open(full_path, "r",encoding='utf-8') as jsonfile:
 
         json1 = json.load(jsonfile)
-        if level_id in json1:
+        if str(level_id) in json1:
             print("Level with this ID already exists")
         else:
             level_dict = {str(level_id):level1.__dict__}
