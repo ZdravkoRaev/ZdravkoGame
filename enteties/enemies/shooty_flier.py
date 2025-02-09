@@ -17,11 +17,12 @@ class ShootyFlier():
             shot.base.boundingBox.x=self.base.boundingBox.x
             shot.base.boundingBox.y=self.base.boundingBox.y
 
-            if self.base.boundingBox.x==player.base.boundingBox.x and self.base.boundingBox.y==player.base.boundingBox.y:
+            if self.base.boundingBox.x==player.base.boundingBox.x and\
+                  self.base.boundingBox.y==player.base.boundingBox.y:
                 shot.base.x_vel=1
                 shot.base.y_vel=0
             else:
-                distance=sqrt((player.base.boundingBox.x-self.base.boundingBox.x)*(player.base.boundingBox.x-self.base.boundingBox.x)+(player.base.boundingBox.y-self.base.boundingBox.y)*(player.base.boundingBox.y-self.base.boundingBox.y))
+                distance=sqrt((player.base.boundingBox.x-self.base.boundingBox.x)**2+(player.base.boundingBox.y-self.base.boundingBox.y)**2)
                 shot.base.x_vel=(player.base.boundingBox.x-self.base.boundingBox.x)/distance*5
                 shot.base.y_vel=(player.base.boundingBox.y-self.base.boundingBox.y)/distance*5
             self.attackCooldown=60
