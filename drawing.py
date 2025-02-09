@@ -1,12 +1,13 @@
 
 #To do: make it only draw, not also update enemies
+import os
 import pygame
 from enteties.player.player import Player
 from enteties.enemies import basicFlier
 from enteties.enemies import shootyFlier
 from enteties.enemies import projectile
 from enteties.enemies import target
-from sprites import drawSprite
+
 def drawStart(screen,player : Player ,level,enemies):
     pygame.display.update()
     screen.fill((0,0,0))
@@ -67,6 +68,7 @@ def drawStart(screen,player : Player ,level,enemies):
     return enemies
 
 def draw(screen,player : Player ,level,enemies):
+    image=pygame.image.load(os.path.join("sprites","enemies","target.png")).convert_alpha()
     pygame.display.update()
     screen.fill((0,0,0))
     if player.hp<=0:
@@ -86,7 +88,7 @@ def draw(screen,player : Player ,level,enemies):
             color=(255,255,0)
             pygame.draw.rect(screen,color,item.base.boundingBox)
         if item.ID==0:
-            drawSprite.draw(0,item.base.boundingBox.x,item.base.boundingBox.y,screen)
+            screen.blit(image,(item.base.boundingBox.x,item.base.boundingBox.y))
 
 
 
