@@ -5,9 +5,7 @@ from enteties.player.player import Player
 from enteties.player.keys_to_actions import move
 from drawing import draw
 from drawing import drawStart
-from enteties.collisions.collisions_with_enteties import collysions
-from enteties.collisions.directional_collisions import dir_collisions
-from enteties.collisions.collisions_with_level import collisions_enteties
+from enteties.collisions import collisions_enteties,collysions_with_level,dir_collisions
 from enteties.enemies.enemyAI.sorter import sort_ai
 def run(level: Level, screen):
     """a"""
@@ -62,7 +60,7 @@ def run(level: Level, screen):
         player.i_frames-=1
 
         if player.is_attacking:
-            collisions=collysions(player.hurtbox,level)
+            collisions=collysions_with_level(player.hurtbox,level)
             for item in collisions:
                 if level.objects[int(item.x/25)][int(item.y/25)]==2:
                     level.objects[int(item.x/25)][int(item.y/25)]=0
@@ -75,7 +73,7 @@ def run(level: Level, screen):
 
         player.wall_jump_box.bounding_box.x=player.base.bounding_box.x-1
         player.wall_jump_box.bounding_box.y=player.base.bounding_box.y+1
-        wall_stuff=collysions(player.wall_jump_box.bounding_box,level)
+        wall_stuff=collysions_with_level(player.wall_jump_box.bounding_box,level)
         if   player.base.y_vel>2 and wall_stuff:
             player.base.y_vel=2
             for item in wall_stuff:
