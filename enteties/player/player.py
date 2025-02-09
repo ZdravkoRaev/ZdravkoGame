@@ -8,7 +8,7 @@ class Player:
         self.hp=3
         self.invonrabilityFrames=30
 
-        self.attackCooldown=20
+        self.attackCooldown=0
         self.canDash=False
         self.isDashing=False
         self.attackLenght=3

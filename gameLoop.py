@@ -19,8 +19,10 @@ def run(theLevel: Level, screen):
     player.base.boundingBox.y=200
     surface=screen.copy()
     enemies=drawStart(surface,player,theLevel,enemies)
+
     while running:
         clock.tick(60)
+
 
         #getting the player imput
         keys=pygame.key.get_pressed()
