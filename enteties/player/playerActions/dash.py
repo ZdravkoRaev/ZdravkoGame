@@ -1,6 +1,8 @@
+"""sets the players vel to to thee needed one for dashing"""
 import math
 from enteties.player.player import Player
-def dash(player : Player,mouse,mousePos):
+def dash(player : Player,mousePos):
+    """function"""
     if player.canDash:
         x=mousePos[0]-player.base.boundingBox.x
         y=mousePos[1]-player.base.boundingBox.y

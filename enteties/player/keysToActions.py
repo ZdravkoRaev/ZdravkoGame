@@ -1,4 +1,4 @@
-
+"""converts the pressed keys to actions"""
 from pygame import K_d,K_a,K_SPACE
 from enteties.player.player import Player
 
@@ -10,6 +10,7 @@ from enteties.player.playerActions.isDashing import dashing
 from enteties.player.playerActions.hurtboxPosition import hurtPos
 
 def move(player : Player,keys,mouse,mousePos):
+    """thee function"""
     if player.base.wallBelow:
         player.canDash=True
         if not keys[K_d] and not keys[K_a]:
@@ -33,7 +34,7 @@ def move(player : Player,keys,mouse,mousePos):
     if  keys[K_SPACE]:
         player=jump1(player)
     if mouse[2] and player.attackCooldown<0:
-        player=attack(player,mouse,mousePos)
+        player=attack(player,mousePos)
     player.attackCooldown-=1
     player=hurtPos(player,mousePos)
 

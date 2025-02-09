@@ -1,7 +1,5 @@
 from menus import menu
-running=True
-while running:
+RUNNING=True
+while RUNNING:
     menu.main()
-
-
-
+#pylint C:\ZdravkoGame

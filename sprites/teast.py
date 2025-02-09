@@ -1,5 +1,6 @@
-import drawSprite
+"""test fro drawing a sprite"""
 import pygame
+import drawSprite
 clock = pygame.time.Clock()
 surface = pygame.display.set_mode((1600, 900))
 while True:

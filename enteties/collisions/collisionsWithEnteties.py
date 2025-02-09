@@ -1,11 +1,9 @@
 from enteties.templateEntety import TempalteEntety
 
 def collisionsEnteties(entety1 :TempalteEntety,allEnteties):
-    collisEnt=list()
+    collis_ent=list()
     for item in allEnteties:
         if item is not entety1:
             if entety1.base.boundingBox.colliderect(item.base.boundingBox):
-                collisEnt.append(item)
-    return collisEnt         
-              
-        
+                collis_ent.append(item)
+    return collis_ent

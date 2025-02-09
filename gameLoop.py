@@ -40,21 +40,21 @@ def run(theLevel: Level, screen):
         for item in enemies:
             if item.hp<=0:
                 enemies.remove(item)
-            newSTuff=sortAI(player,item)
-            item=newSTuff[0]
+            new_enemies=sortAI(player,item)
+            item=new_enemies[0]
             item=dirCollysions(item,theLevel)
-            if newSTuff[1] is not None:
-                enemies.append(newSTuff[1])
+            if new_enemies[1] is not None:
+                enemies.append(new_enemies[1])
 
         player=move(player,keys,mouse,mouse_pos)
-        enemyCol=collisionsEnteties(player,enemies)
+        enemy_col=collisionsEnteties(player,enemies)
         if player.isAttacking:
             for item in enemies:
                 if player.hurtbox.colliderect(item.base.boundingBox):
                     item.hp-=1
                     if item.hp<=0:
                         enemies.remove(item)
-        if enemyCol and player.invonrabilityFrames<=0:
+        if enemy_col and player.invonrabilityFrames<=0:
             player.hp-=1
             player.invonrabilityFrames=60
         player.invonrabilityFrames-=1
