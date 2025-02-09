@@ -1,3 +1,4 @@
+"""a"""
 import json
 import os
 import pygame
@@ -9,6 +10,7 @@ import run_level
 
 from levels.converter import delete_level_from_json
 def main():
+    """a"""
     pygame.init() # pylint: disable=maybe-no-member
     pygame.display.set_caption("Game")
 
@@ -45,8 +47,8 @@ def main():
                     y=200
                     offset=150
                     path1=os.getcwd()
-                    fullPath=os.path.join(path1,"levels","mainStory.txt")
-                    with open(fullPath, "r",encoding='utf-8') as jsonfile:
+                    full_path=os.path.join(path1,"levels","mainStory.txt")
+                    with open(full_path, "r",encoding='utf-8') as jsonfile:
                         json1 = json.load(jsonfile)
                     if str(i+1) in json1:                    
                         state=button_creator.render_button(button1.Button\
@@ -62,8 +64,8 @@ def main():
                     y=200
                     offset=150
                     path1=os.getcwd()
-                    fullPath=os.path.join(path1,"levels","mainStory.txt")
-                    with open(fullPath, "r",encoding='utf-8') as jsonfile:
+                    full_path=os.path.join(path1,"levels","mainStory.txt")
+                    with open(full_path, "r",encoding='utf-8') as jsonfile:
                         json1 = json.load(jsonfile)
                     if str(i+1) in json1:
                         deletion=button_creator.render_button(button1.Button\

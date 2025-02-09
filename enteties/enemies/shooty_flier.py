@@ -16,16 +16,16 @@ class ShootyFlier():
         shot=None
         if self.attack_cooldown<0:
             shot=Projectile()
-            shot.base.boundingBox.x=self.base.boundingBox.x
-            shot.base.boundingBox.y=self.base.boundingBox.y
+            shot.base.bounding_box.x=self.base.bounding_box.x
+            shot.base.bounding_box.y=self.base.bounding_box.y
 
-            if self.base.boundingBox.x==player.base.boundingBox.x and\
-                  self.base.boundingBox.y==player.base.boundingBox.y:
+            if self.base.bounding_box.x==player.base.bounding_box.x and\
+                  self.base.bounding_box.y==player.base.bounding_box.y:
                 shot.base.x_vel=1
                 shot.base.y_vel=0
             else:
-                distance=sqrt((player.base.boundingBox.x-self.base.boundingBox.x)**2+(player.base.boundingBox.y-self.base.boundingBox.y)**2)
-                shot.base.x_vel=(player.base.boundingBox.x-self.base.boundingBox.x)/distance*5
-                shot.base.y_vel=(player.base.boundingBox.y-self.base.boundingBox.y)/distance*5
+                distance=sqrt((player.base.bounding_box.x-self.base.bounding_box.x)**2+(player.base.bounding_box.y-self.base.bounding_box.y)**2)
+                shot.base.x_vel=(player.base.bounding_box.x-self.base.bounding_box.x)/distance*5
+                shot.base.y_vel=(player.base.bounding_box.y-self.base.bounding_box.y)/distance*5
             self.attack_cooldown=60
         return list((self,shot))

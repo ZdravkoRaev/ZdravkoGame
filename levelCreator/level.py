@@ -1,5 +1,8 @@
+"""a"""
 class Level:
+    """a"""
     def __init__(self):
+        """a"""
         self.objects =list()
         for x in range(64):
             q=list()

@@ -13,10 +13,10 @@ class BasicFlier():
 
     def ai(self,player :Player):
         """a"""
-        x1=player.base.boundingBox.x
-        x2=self.base.boundingBox.x
-        y1=player.base.boundingBox.y
-        y2=self.base.boundingBox.y
+        x1=player.base.bounding_box.x
+        x2=self.base.bounding_box.x
+        y1=player.base.bounding_box.y
+        y2=self.base.bounding_box.y
         if x1==x2 and y1==y2:
             return self
         distance=sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))

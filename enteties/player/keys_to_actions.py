@@ -11,12 +11,12 @@ from enteties.player.playerActions.hurtbox_pos import hurt_pos
 
 def move(player : Player,keys,mouse,mouse_pos):
     """thee function"""
-    if player.base.wallBelow:
+    if player.base.wall_below:
         player.cad_dash=True
         if not keys[pygame.K_d] and not keys[pygame.K_a]: # pylint: disable=maybe-no-member
             player.base.x_vel*=0.5
 
-    if player.base.wallLeft or player.base.wallRight:
+    if player.base.wall_left or player.base.wall_right:
         player.cad_dash=True
 
     if player.is_attacking:

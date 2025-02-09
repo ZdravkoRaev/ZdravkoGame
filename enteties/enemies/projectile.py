@@ -8,7 +8,7 @@ class Projectile():
         self.base=BaseEntety(20,20)
     def ai(self):
         """a"""
-        if self.base.wallBelow or self.base.wallAbove or self.base.wallLeft or self.base.wallRight:
+        if self.base.wall_below or self.base.wall_above or self.base.wall_left or self.base.wall_right:
             self.hp=-1
         return self
 

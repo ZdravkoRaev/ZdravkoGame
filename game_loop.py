@@ -9,7 +9,7 @@ from enteties.collisions.collisions_with_enteties import collysions
 from enteties.collisions.directional_collisions import dir_collisions
 from enteties.collisions.collisions_with_level import collisions_enteties
 from enteties.enemies.enemyAI.sorter import sort_ai
-def run(theLevel: Level, screen):
+def run(level: Level, screen):
     """a"""
     x_camera=0
     y_camera=0
@@ -17,10 +17,10 @@ def run(theLevel: Level, screen):
     player=Player()
     enemies=list()
     running=True
-    player.base.boundingBox.x=200
-    player.base.boundingBox.y=200
+    player.base.bounding_box.x=200
+    player.base.bounding_box.y=200
     surface=screen.copy()
-    enemies=drawStart(surface,player,theLevel,enemies)
+    enemies=drawStart(surface,player,level,enemies)
 
     while running:
         clock.tick(60)
@@ -38,13 +38,13 @@ def run(theLevel: Level, screen):
 
         surface=screen.copy()
         surface.fill((100, 100, 100))
-        draw(surface,player,theLevel,enemies)
+        draw(surface,player,level,enemies)
         for item in enemies:
             if item.hp<=0:
                 enemies.remove(item)
             new_enemies=sort_ai(player,item)
             item=new_enemies[0]
-            item=dir_collisions(item,theLevel)
+            item=dir_collisions(item,level)
             if new_enemies[1] is not None:
                 enemies.append(new_enemies[1])
 
@@ -52,7 +52,7 @@ def run(theLevel: Level, screen):
         enemy_col=collisions_enteties(player,enemies)
         if player.is_attacking:
             for item in enemies:
-                if player.hurtbox.colliderect(item.base.boundingBox):
+                if player.hurtbox.colliderect(item.base.bounding_box):
                     item.hp-=1
                     if item.hp<=0:
                         enemies.remove(item)
@@ -62,32 +62,33 @@ def run(theLevel: Level, screen):
         player.i_frames-=1
 
         if player.is_attacking:
-            collisions=collysions(player.hurtbox,theLevel)
+            collisions=collysions(player.hurtbox,level)
             for item in collisions:
-                if theLevel.objects[int(item.x/25)][int(item.y/25)]==2:
-                    theLevel.objects[int(item.x/25)][int(item.y/25)]=0
+                if level.objects[int(item.x/25)][int(item.y/25)]==2:
+                    level.objects[int(item.x/25)][int(item.y/25)]=0
         #gravity
-        player=dir_collisions(player,theLevel)
+        player=dir_collisions(player,level)
         if player.base.y_vel<10:
             player.base.y_vel+=1
-        
+
         #making wallSlides/wallJumps better
-        
-        player.wall_jump_box.boundingBox.x=player.base.boundingBox.x-1
-        player.wall_jump_box.boundingBox.y=player.base.boundingBox.y+1
-        wall_stuff=collysions(player.wall_jump_box.boundingBox,theLevel)
+
+        player.wall_jump_box.bounding_box.x=player.base.bounding_box.x-1
+        player.wall_jump_box.bounding_box.y=player.base.bounding_box.y+1
+        wall_stuff=collysions(player.wall_jump_box.bounding_box,level)
         if   player.base.y_vel>2 and wall_stuff:
             player.base.y_vel=2
             for item in wall_stuff:
-                if item.x<player.base.boundingBox.x:
-                    player.base.wallLeft=True
+                if item.x<player.base.bounding_box.x:
+                    player.base.wall_left=True
                 else:
-                    player.base.wallRight=True
+                    player.base.wall_right=True
 
         #camera controls
-        x_camera=player.base.boundingBox.x*2+25+(pygame.mouse.get_pos()[0]-800)/8
-        y_camera=player.base.boundingBox.y*2+50+(pygame.mouse.get_pos()[1]-450)/16
-        surface=pygame.transform.scale(surface, (screen.get_rect().size[0]*2,screen.get_rect().size[1]*2))
+        x_camera=player.base.bounding_box.x*2+25+(pygame.mouse.get_pos()[0]-800)/8
+        y_camera=player.base.bounding_box.y*2+50+(pygame.mouse.get_pos()[1]-450)/16
+        surface=pygame.transform.scale\
+            (surface, (screen.get_rect().size[0]*2,screen.get_rect().size[1]*2))
 
         #making sure the camera doesn't show stuff out of the level
         if x_camera<800:
@@ -98,7 +99,7 @@ def run(theLevel: Level, screen):
             y_camera=450
         elif y_camera>1350:
             y_camera=1350
-        
+
         screen.blit(surface,(-x_camera+800,-y_camera+450))
 
 

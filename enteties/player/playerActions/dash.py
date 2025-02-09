@@ -4,8 +4,8 @@ from enteties.player.player import Player
 def dash(player : Player,mouse_pos):
     """function"""
     if player.cad_dash:
-        x=mouse_pos[0]-player.base.boundingBox.x
-        y=mouse_pos[1]-player.base.boundingBox.y
+        x=mouse_pos[0]-player.base.bounding_box.x
+        y=mouse_pos[1]-player.base.bounding_box.y
         lenght=math.sqrt(x*x+y*y)
         player.base.x_vel=x/lenght*12
         player.base.y_vel=y/lenght*8

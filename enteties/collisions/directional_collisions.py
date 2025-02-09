@@ -3,32 +3,32 @@ from enteties.collisions.collisions_with_enteties import collysions
 from enteties.template_entety import TempalteEntety
 def dir_collisions(entety : TempalteEntety,level):
     """a"""
-    entety.base.wallBelow=False
-    entety.base.wallLeft=False
-    entety.base.wallAbove=False
-    entety.base.wallRight=False
-    entety.base.boundingBox.x+=entety.base.x_vel
-    collisions=collysions(entety.base.boundingBox,level)
+    entety.base.wall_below=False
+    entety.base.wall_left=False
+    entety.base.wall_above=False
+    entety.base.wall_right=False
+    entety.base.bounding_box.x+=entety.base.x_vel
+    collisions=collysions(entety.base.bounding_box,level)
 
 
     for item in collisions:
         if entety.base.x_vel>0:
-            entety.base.wallRight=True
-            entety.base.boundingBox.right=item.left
+            entety.base.wall_right=True
+            entety.base.bounding_box.right=item.left
             entety.base.x_vel=0
         elif entety.base.x_vel<0:
-            entety.base.wallLeft=True
-            entety.base.boundingBox.left=item.right
+            entety.base.wall_left=True
+            entety.base.bounding_box.left=item.right
             entety.base.x_vel=0
-    entety.base.boundingBox.y+=entety.base.y_vel
-    collisions=collysions(entety.base.boundingBox,level)
+    entety.base.bounding_box.y+=entety.base.y_vel
+    collisions=collysions(entety.base.bounding_box,level)
     for item in collisions:
         if entety.base.y_vel>0:
-            entety.base.wallBelow=True
-            entety.base.boundingBox.bottom=item.top
+            entety.base.wall_below=True
+            entety.base.bounding_box.bottom=item.top
             entety.base.y_vel=0
         elif entety.base.y_vel<0:
-            entety.base.wallAbove=True
-            entety.base.boundingBox.top=item.bottom
+            entety.base.wall_above=True
+            entety.base.bounding_box.top=item.bottom
             entety.base.y_vel=0
     return entety

@@ -16,26 +16,26 @@ def drawStart(screen,player : Player ,level,enemies):
         for y in range(36):
             if level.objects[x][y]==3:
                 enemy=basic_flier.BasicFlier()
-                enemy.base.boundingBox.x=x*25
-                enemy.base.boundingBox.y=y*25
+                enemy.base.bounding_box.x=x*25
+                enemy.base.bounding_box.y=y*25
                 enemies.append(enemy)
                 level.objects[x][y]=0
             if level.objects[x][y]==4:
                 enemy=shooty_flier.ShootyFlier()
-                enemy.base.boundingBox.x=x*25
-                enemy.base.boundingBox.y=y*25
+                enemy.base.bounding_box.x=x*25
+                enemy.base.bounding_box.y=y*25
                 enemies.append(enemy)
                 level.objects[x][y]=0
             if level.objects[x][y]==5:
                 enemy=projectile.Projectile()
-                enemy.base.boundingBox.x=x*25
-                enemy.base.boundingBox.y=y*25
+                enemy.base.bounding_box.x=x*25
+                enemy.base.bounding_box.y=y*25
                 enemies.append(enemy)
                 level.objects[x][y]=0
             if level.objects[x][y]==6:
                 enemy=target.Target()
-                enemy.base.boundingBox.x=x*25
-                enemy.base.boundingBox.y=y*25
+                enemy.base.bounding_box.x=x*25
+                enemy.base.bounding_box.y=y*25
                 enemies.append(enemy)
                 level.objects[x][y]=0
 
@@ -51,22 +51,22 @@ def draw(screen,player : Player ,level,enemies):
     pygame.display.update()
     screen.fill((0,0,0))
     if player.hp<=0:
-        pygame.draw.rect(screen,(0,100,0),player.base.boundingBox)
+        pygame.draw.rect(screen,(0,100,0),player.base.bounding_box)
     else:
-        pygame.draw.rect(screen,(0,255,0),player.base.boundingBox)
+        pygame.draw.rect(screen,(0,255,0),player.base.bounding_box)
     for item in enemies:
         color=(255,255,255)
         if item.id==1:
             color=(255,0,0)
-            pygame.draw.rect(screen,color,item.base.boundingBox)
+            pygame.draw.rect(screen,color,item.base.bounding_box)
         if item.id==2:
             color=(255,0,255)
-            pygame.draw.rect(screen,color,item.base.boundingBox)
+            pygame.draw.rect(screen,color,item.base.bounding_box)
         if item.id==100:
             color=(255,255,0)
-            pygame.draw.rect(screen,color,item.base.boundingBox)
+            pygame.draw.rect(screen,color,item.base.bounding_box)
         if item.id==0:
-            screen.blit(image,(item.base.boundingBox.x,item.base.boundingBox.y))
+            screen.blit(image,(item.base.bounding_box.x,item.base.bounding_box.y))
     for x in range(64):
         for y in range(36):
             if level.objects[x][y]==1:
