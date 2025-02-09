@@ -1,5 +1,5 @@
 """converts the pressed keys to actions"""
-from pygame import K_d,K_a,K_SPACE
+import pygame
 from enteties.player.player import Player
 
 from enteties.player.playerActions.left import moveLeft
@@ -13,7 +13,7 @@ def move(player : Player,keys,mouse,mousePos):
     """thee function"""
     if player.base.wallBelow:
         player.canDash=True
-        if not keys[K_d] and not keys[K_a]:
+        if not keys[pygame.K_d] and not keys[pygame.K_a]: # pylint: disable=maybe-no-member
             player.base.x_vel*=0.5
 
     if player.base.wallLeft or player.base.wallRight:
@@ -27,11 +27,11 @@ def move(player : Player,keys,mouse,mousePos):
             player.attackCooldown=40
     if player.isDashing:
         player=dashing(player)
-    if keys[K_d]:
+    if keys[pygame.K_d]: # pylint: disable=maybe-no-member
         player=moveRight(player)
-    if keys[K_a]:
+    if keys[pygame.K_a]: # pylint: disable=maybe-no-member
         player=moveLeft(player)
-    if  keys[K_SPACE]:
+    if  keys[pygame.K_SPACE]: # pylint: disable=maybe-no-member
         player=jump1(player)
     if mouse[2] and player.attackCooldown<0:
         player=attack(player,mousePos)

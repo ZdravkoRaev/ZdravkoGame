@@ -9,7 +9,8 @@ while True:
     surface.fill((110,110,110))
     drawSprite.draw(0,100,100,surface)
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
+        if event.type == pygame.QUIT: # pylint: disable=maybe-no-member
+            pygame.quit() # pylint: disable=maybe-no-member
             raise SystemExit
     pygame.display.update()
+    

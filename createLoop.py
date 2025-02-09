@@ -32,7 +32,7 @@ def run(theLevel: Level, screen):
         if mouse_press and mouse_pos[0]>=2 and mouse_pos[0]<=61 and mouse_pos[1]>=2 and mouse_pos[1]<=33:
             theLevel.objects[mouse_pos[0]][mouse_pos[1]]=cursor_state
         for event in pygame.event.get():
-            if event.type==pygame.QUIT:
+            if event.type==pygame.QUIT: # pylint: disable=maybe-no-member
                 running=False
         pressed=(pressed[1],mouse_press)
         draw(screen,theLevel)
@@ -40,10 +40,10 @@ def run(theLevel: Level, screen):
             running=False
             path1=os.getcwd()
             fullPath=os.path.join(path1,"levels","mainStory.txt")
-            with open(fullPath, "r") as jsonfile:
-                json1 = json.load(jsonfile)  
+            with open(fullPath, "r",encoding='utf-8') as jsonfile:
+                json1 = json.load(jsonfile)
             for i in range(20):
-                if not str(i+1) in json1:  
+                if not str(i+1) in json1:
                     addLevelToJson(theLevel,i+1)
                     break
 

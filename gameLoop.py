@@ -101,7 +101,7 @@ def run(theLevel: Level, screen):
 
 
         for event in pygame.event.get():
-            if event.type==pygame.QUIT:
+            if event.type==pygame.QUIT: # pylint: disable=maybe-no-member
                 running=False
         if not enemies:
             running=False
