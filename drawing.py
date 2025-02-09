@@ -42,7 +42,7 @@ def drawStart(screen,player : Player ,level,enemies):
     for x in range(64):
         for y in range(36):
             pygame.draw.rect(screen,(255,255,255),pygame.Rect((x*25,y*25,1,1)))
-    if player.isAttacking:
+    if player.is_attacking:
         pygame.draw.rect(screen,(255,0,0),player.hurtbox)
     return enemies
 
@@ -85,5 +85,5 @@ def draw(screen,player : Player ,level,enemies):
     for x in range(64):
         for y in range(36):
             pygame.draw.rect(screen,(255,255,255),pygame.Rect((x*25,y*25,1,1)))
-    if player.isAttacking:
+    if player.is_attacking:
         pygame.draw.rect(screen,(255,0,0),player.hurtbox)

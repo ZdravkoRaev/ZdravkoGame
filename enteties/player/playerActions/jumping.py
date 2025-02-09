@@ -1,5 +1,7 @@
+"""a"""
 from enteties.player.player import Player
 def jump1(player : Player):
+    """a"""
     if player.base.wallBelow:
         player.base.y_vel=-16
     elif player.base.wallRight:

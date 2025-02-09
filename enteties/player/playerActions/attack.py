@@ -3,6 +3,6 @@ from enteties.player.playerActions.dash import dash
 from enteties.player.player import Player
 def attack(player : Player,mouse_pos):
     """function"""
-    player.isAttacking=True
+    player.is_attacking=True
     player=dash(player,mouse_pos)
     return player

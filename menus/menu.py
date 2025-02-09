@@ -7,7 +7,7 @@ from levelCreator.level import Level
 import create_loop
 import run_level
 
-from levels.converter import deleteLevelFromJson
+from levels.converter import delete_level_from_json
 def main():
     pygame.init() # pylint: disable=maybe-no-member
     pygame.display.set_caption("Game")
@@ -69,7 +69,7 @@ def main():
                         deletion=button_creator.render_button(button1.Button\
                         (x+i%5*offset,y+int(i/5)*offset,100,100,str(i+1),i),bg,deletion,pressed,mouse_x,mouse_y)
                 if deletion!=-1:
-                    deleteLevelFromJson(str(deletion+1))
+                    delete_level_from_json(str(deletion+1))
                 state=11
                 state=button_creator.render_button(button1.Button\
                 (1200,770,300,100,"Exit delete Mode",1),bg,state,pressed,mouse_x,mouse_y)

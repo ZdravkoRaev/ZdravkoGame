@@ -6,7 +6,7 @@ from enteties.player.keys_to_actions import move
 from drawing import draw
 from drawing import drawStart
 from enteties.collisions.collisions_with_enteties import collysions
-from enteties.collisions.directional_collisions import dirCollysions
+from enteties.collisions.directional_collisions import dir_collisions
 from enteties.collisions.collisions_with_level import collisions_enteties
 from enteties.enemies.enemyAI.sorter import sort_ai
 def run(theLevel: Level, screen):
@@ -44,38 +44,38 @@ def run(theLevel: Level, screen):
                 enemies.remove(item)
             new_enemies=sort_ai(player,item)
             item=new_enemies[0]
-            item=dirCollysions(item,theLevel)
+            item=dir_collisions(item,theLevel)
             if new_enemies[1] is not None:
                 enemies.append(new_enemies[1])
 
         player=move(player,keys,mouse,mouse_pos)
         enemy_col=collisions_enteties(player,enemies)
-        if player.isAttacking:
+        if player.is_attacking:
             for item in enemies:
                 if player.hurtbox.colliderect(item.base.boundingBox):
                     item.hp-=1
                     if item.hp<=0:
                         enemies.remove(item)
-        if enemy_col and player.invonrabilityFrames<=0:
+        if enemy_col and player.i_frames<=0:
             player.hp-=1
-            player.invonrabilityFrames=60
-        player.invonrabilityFrames-=1
+            player.i_frames=60
+        player.i_frames-=1
 
-        if player.isAttacking:
+        if player.is_attacking:
             collisions=collysions(player.hurtbox,theLevel)
             for item in collisions:
                 if theLevel.objects[int(item.x/25)][int(item.y/25)]==2:
                     theLevel.objects[int(item.x/25)][int(item.y/25)]=0
         #gravity
-        player=dirCollysions(player,theLevel)
+        player=dir_collisions(player,theLevel)
         if player.base.y_vel<10:
             player.base.y_vel+=1
         
         #making wallSlides/wallJumps better
         
-        player.wallJumpBox.boundingBox.x=player.base.boundingBox.x-1
-        player.wallJumpBox.boundingBox.y=player.base.boundingBox.y+1
-        wall_stuff=collysions(player.wallJumpBox.boundingBox,theLevel)
+        player.wall_jump_box.boundingBox.x=player.base.boundingBox.x-1
+        player.wall_jump_box.boundingBox.y=player.base.boundingBox.y+1
+        wall_stuff=collysions(player.wall_jump_box.boundingBox,theLevel)
         if   player.base.y_vel>2 and wall_stuff:
             player.base.y_vel=2
             for item in wall_stuff:

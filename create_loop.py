@@ -6,7 +6,7 @@ from levelCreator.level import Level
 from drawing_level import draw
 from menus.button_creator import render_button
 from menus.button import Button
-from levels.converter import addLevelToJson
+from levels.converter import add_level_to_json
 
 
 def run(theLevel: Level, screen):
@@ -55,7 +55,7 @@ def run(theLevel: Level, screen):
                 json1 = json.load(jsonfile)
             for i in range(20):
                 if not str(i+1) in json1:
-                    addLevelToJson(theLevel,i+1)
+                    add_level_to_json(theLevel,i+1)
                     break
 
     return 0

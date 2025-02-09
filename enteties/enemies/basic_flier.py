@@ -1,8 +1,10 @@
-#chases the player if the player is too close. Deals damage on touch
+"""chases the player if the player is too close. Deals damage on touch"""
+from math import sqrt
 from enteties.base_entety import BaseEntety
 from enteties.player.player import Player
-from math import sqrt
+
 class BasicFlier():
+    """a"""
     def __init__(self):
         self.hp=1
         self.id=1
@@ -10,6 +12,7 @@ class BasicFlier():
 
 
     def ai(self,player :Player):
+        """a"""
         x1=player.base.boundingBox.x
         x2=self.base.boundingBox.x
         y1=player.base.boundingBox.y
@@ -18,7 +21,7 @@ class BasicFlier():
             return self
         distance=sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))
         if distance<400:
-        
+
             self.base.x_vel=(x1-x2)/distance*3
             self.base.y_vel=(y1-y2)/distance*3
         else:
@@ -26,6 +29,3 @@ class BasicFlier():
             self.base.y_vel*=0.9
 
         return self
-
-
-    

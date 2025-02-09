@@ -1,7 +1,7 @@
 """a"""
 from enteties.collisions.collisions_with_enteties import collysions
 from enteties.template_entety import TempalteEntety
-def dirCollysions(entety : TempalteEntety,level):
+def dir_collisions(entety : TempalteEntety,level):
     """a"""
     entety.base.wallBelow=False
     entety.base.wallLeft=False

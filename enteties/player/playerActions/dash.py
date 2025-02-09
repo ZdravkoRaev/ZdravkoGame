@@ -3,12 +3,12 @@ import math
 from enteties.player.player import Player
 def dash(player : Player,mouse_pos):
     """function"""
-    if player.canDash:
+    if player.cad_dash:
         x=mouse_pos[0]-player.base.boundingBox.x
         y=mouse_pos[1]-player.base.boundingBox.y
         lenght=math.sqrt(x*x+y*y)
         player.base.x_vel=x/lenght*12
         player.base.y_vel=y/lenght*8
-        player.isDashing=True
-        player.canDash=False
+        player.is_dashing=True
+        player.cad_dash=False
     return player

@@ -1,6 +1,7 @@
-#goes left and right. Deals damage on touch.
+"""goes left and right. Deals damage on touch."""
 from enteties.base_entety import BaseEntety
-class basicFlier():
+class BasicGrounded():
+    """a"""
     def __init__(self):
         self.hp=1
         self.id=3
