@@ -5,6 +5,7 @@ def collysions(entety : TempalteEntety,level):
     collisions_with_level=list()
     for x in range(6):
         for y in range(6):
+            #making sure wee are checking only parts in the level
             if x+int((entety.x-entety.x%25)/25)-3>=0 and\
             x+int((entety.x-entety.x%25)/25)-3<=63 and\
             y+int((entety.y-entety.y%25)/25)-3>=0 and\
