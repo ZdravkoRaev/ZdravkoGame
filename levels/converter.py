@@ -15,11 +15,6 @@ def loadLevelFromJson(levelID):
             for x in range(64):
                 for y in range(36):
                     level1.objects[x][y]=a[x][y]
-
-
-
-
-
     return level1
 def deleteLevelFromJson(levelID):
     path1=os.getcwd()

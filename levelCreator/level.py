@@ -1,6 +1,6 @@
 class Level:
     def __init__(self):
-        self.objects = list()
+        self.objects =list()
         for x in range(64):
             q=list()
             for y in range(36):

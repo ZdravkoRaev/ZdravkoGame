@@ -1,7 +1,8 @@
 import pygame
 def draw(screen,level):
-    screen.fill((0,0,0))
+
     pygame.display.update()
+    screen.fill((0,0,0))
 
     for x in range(64):
         for y in range(36):
