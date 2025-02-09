@@ -11,30 +11,8 @@ from enteties.enemies import target
 def drawStart(screen,player : Player ,level,enemies):
     pygame.display.update()
     screen.fill((0,0,0))
-    if player.hp<=0:
-        pygame.draw.rect(screen,(0,100,0),player.base.boundingBox)
-    else:
-        pygame.draw.rect(screen,(0,255,0),player.base.boundingBox)
-    
-    for item in enemies:
-        color=(255,255,255)
-        if item.ID==1:
-            color=(255,0,0)
-        if item.ID==2:
-            color=(255,0,255)
-        if item.ID==100:
-            color=(255,255,0)
-        pygame.draw.rect(screen,color,item.base.boundingBox)
-
     for x in range(64):
         for y in range(36):
-            if level.objects[x][y]==1:
-                a=pygame.Rect((x*25,y*25,25,25))
-
-                pygame.draw.rect(screen,(0,0,255),a)
-            if level.objects[x][y]==2:
-                a=pygame.Rect((x*25,y*25,25,25))
-                pygame.draw.rect(screen,(0,255,255),a)
             if level.objects[x][y]==3:
                 enemy=basic_flier.BasicFlier()
                 enemy.base.boundingBox.x=x*25
@@ -77,20 +55,17 @@ def draw(screen,player : Player ,level,enemies):
         pygame.draw.rect(screen,(0,255,0),player.base.boundingBox)
     for item in enemies:
         color=(255,255,255)
-        if item.ID==1:
+        if item.id==1:
             color=(255,0,0)
             pygame.draw.rect(screen,color,item.base.boundingBox)
-        if item.ID==2:
+        if item.id==2:
             color=(255,0,255)
             pygame.draw.rect(screen,color,item.base.boundingBox)
-        if item.ID==100:
+        if item.id==100:
             color=(255,255,0)
             pygame.draw.rect(screen,color,item.base.boundingBox)
-        if item.ID==0:
+        if item.id==0:
             screen.blit(image,(item.base.boundingBox.x,item.base.boundingBox.y))
-
-
-
     for x in range(64):
         for y in range(36):
             if level.objects[x][y]==1:

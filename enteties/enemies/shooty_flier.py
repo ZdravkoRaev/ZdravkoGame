@@ -7,10 +7,10 @@ class ShootyFlier():
     """class"""
     def __init__(self):
         self.hp=1
-        self.ID=2
+        self.id=2
         self.base=BaseEntety(25,25)
         self.attack_cooldown=60
-    def AI(self,player :Player):
+    def ai(self,player :Player):
         """how the enemy acts"""
         self.attack_cooldown-=1
         shot=None

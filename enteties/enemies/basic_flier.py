@@ -5,11 +5,11 @@ from math import sqrt
 class BasicFlier():
     def __init__(self):
         self.hp=1
-        self.ID=1
+        self.id=1
         self.base=BaseEntety(25,25)
 
 
-    def AI(self,player :Player):
+    def ai(self,player :Player):
         x1=player.base.boundingBox.x
         x2=self.base.boundingBox.x
         y1=player.base.boundingBox.y

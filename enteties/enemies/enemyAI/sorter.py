@@ -1,15 +1,15 @@
 def sortAI(player,enemy):
     newEnemy=None
-    if enemy.ID==1:
-        enemy=enemy.AI(player)
-    if enemy.ID==2:
-        both=enemy.AI(player)
+    if enemy.id==1:
+        enemy=enemy.ai(player)
+    if enemy.id==2:
+        both=enemy.ai(player)
         enemy=both[0]
         newEnemy=both[1]
-    if enemy.ID==3:
+    if enemy.id==3:
         pass
-    if enemy.ID==4:
+    if enemy.id==4:
         pass
-    if enemy.ID==100:
-        enemy=enemy.AI()
+    if enemy.id==100:
+        enemy=enemy.ai()
     return list((enemy, newEnemy))
