@@ -1,4 +1,4 @@
-from enteties.collisions.collisionsWithLevel import collysions
+from enteties.collisions.collisions_with_enteties import collysions
 from enteties.templateEntety import TempalteEntety
 def dirCollysions(entety : TempalteEntety,level):
     entety.base.wallBelow=False
