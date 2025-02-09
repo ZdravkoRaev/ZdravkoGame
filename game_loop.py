@@ -8,7 +8,7 @@ from drawing import drawStart
 from enteties import collisions
 from enteties.enemies.enemyAI.sorter import sort_ai
 from levels.converter import add_score_to_json
-def run(level: Level, screen):
+def run(level: Level, screen,id:int):
     """a"""
     x_camera=0
     y_camera=0
@@ -118,5 +118,5 @@ def run(level: Level, screen):
         if not enemies or all_bullets:
             running=False
     score=10000/frame*player.hp
-    add_score_to_json(1,"Zdravko",score)
+    add_score_to_json(id,"Zdravko",int(score))
     return 0

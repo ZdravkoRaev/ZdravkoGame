@@ -53,10 +53,15 @@ def add_score_to_json(level_id:int, name:str,score:int):
     full_path=os.path.join(path1,"levels","scores.txt")
     with open(full_path, "r",encoding='utf-8') as jsonfile:
         json1 = json.load(jsonfile)
-        if str(level_id) in json1 and name in json1[str(level_id)]:
-            current_scores=json1[str(level_id)][name]
-            if str(score) not in current_scores:
-                current_scores.append(str(score))
+        if not str(level_id) in json1:
+            json1[str(level_id)]=dict()
+
+        if not name in json1[str(level_id)]:
+            json1[str(level_id)][name]=list()
+
+        current_scores=json1[str(level_id)][name]
+        if str(score) not in current_scores:
+            current_scores.append(str(score))
         else:
             current_scores=list()
             current_scores.append(str(score))
