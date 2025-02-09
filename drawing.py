@@ -10,6 +10,8 @@ from enteties.enemies import target
 
 def drawStart(screen,player : Player ,level,enemies):
     """a"""
+
+    
     pygame.display.update()
     screen.fill((0,0,0))
     for x in range(64):
@@ -46,11 +48,10 @@ def drawStart(screen,player : Player ,level,enemies):
         pygame.draw.rect(screen,(255,0,0),player.hurtbox)
     return enemies
 
-def draw(screen,player : Player ,level,enemies,frame:int):
-    image=pygame.image.load(os.path.join("sprites","enemies","target.png")).convert_alpha()
+def draw(screen,player : Player ,level,enemies,frame:int,tile,bg):
 
     pygame.display.update()
-    screen.fill((0,0,0))
+    screen.blit(bg,(0,0))
     screen.blit(player.sprites(frame),(player.base.bounding_box.x-8,player.base.bounding_box.y-12))
 
 
@@ -61,8 +62,7 @@ def draw(screen,player : Player ,level,enemies,frame:int):
     for x in range(64):
         for y in range(36):
             if level.objects[x][y]==1:
-                a=pygame.Rect((x*25,y*25,25,25))
-                pygame.draw.rect(screen,(0,0,255),a)
+                screen.blit(tile,(x*25,y*25))
             if level.objects[x][y]==2:
                 a=pygame.Rect((x*25,y*25,25,25))
                 pygame.draw.rect(screen,(0,255,255),a)
@@ -73,8 +73,5 @@ def draw(screen,player : Player ,level,enemies,frame:int):
             if level.objects[x][y]==5:
                 level.objects[x][y]=0
 
-    for x in range(64):
-        for y in range(36):
-            pygame.draw.rect(screen,(255,255,255),pygame.Rect((x*25,y*25,1,1)))
     if player.is_attacking:
         pygame.draw.rect(screen,(255,0,0),player.hurtbox)

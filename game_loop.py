@@ -1,5 +1,6 @@
 """a"""
 import pygame
+import os
 from levelCreator.level import Level
 from enteties.player.player import Player
 from enteties.player.keys_to_actions import move
@@ -10,6 +11,8 @@ from enteties.enemies.enemyAI.sorter import sort_ai
 from levels.converter import add_score_to_json
 def run(level: Level, screen,id:int):
     """a"""
+    tile=pygame.image.load(os.path.join("sprites","wallsprites","wall0.png")).convert_alpha()
+    bg=pygame.image.load(os.path.join("sprites","bg.png")).convert_alpha()
     x_camera=0
     y_camera=0
     clock = pygame.time.Clock()
@@ -39,7 +42,7 @@ def run(level: Level, screen,id:int):
 
         surface=screen.copy()
         surface.fill((100, 100, 100))
-        draw(surface,player,level,enemies,frame)
+        draw(surface,player,level,enemies,frame,tile,bg)
         for item in enemies:
             if item.hp<=0:
                 enemies.remove(item) # pylint: disable = modified-iterating-list
@@ -115,7 +118,7 @@ def run(level: Level, screen,id:int):
 
 
 
-        if not enemies or all_bullets:
+        if not enemies or all_bullets or player.hp==0:
             running=False
     score=10000/frame*player.hp
     add_score_to_json(id,"Zdravko",int(score))

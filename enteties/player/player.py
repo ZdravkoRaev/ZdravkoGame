@@ -7,7 +7,7 @@ class Player:
     def __init__(self):
         self.base=BaseEntety(25,50)
         self.wall_jump_box=BaseEntety(27,48)
-        self.hp=3
+        self.hp=1
         self.i_frames=30
         self.attack_cd=0
         self.cad_dash=False
