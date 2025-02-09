@@ -9,7 +9,7 @@ from menus.button import Button
 from levels.converter import add_level_to_json
 
 
-def run(theLevel: Level, screen):
+def run(level: Level, screen):
     """a"""
     pressed=(0,0)
     cursor_state=1
@@ -39,14 +39,17 @@ def run(theLevel: Level, screen):
         (700,850,50,50,"Target",6),screen,cursor_state,pressed,mouse_pos[0], mouse_pos[1])
         mouse_pos[0]=int((mouse_pos[0]-mouse_pos[0]%25)/25)
         mouse_pos[1]=int((mouse_pos[1]-mouse_pos[1]%25)/25)
+
+        #the player can change only tiles that are not on the border and aren't the two startin tiles
         if mouse_press and mouse_pos[0]>=2 and mouse_pos[0]<=61\
-            and mouse_pos[1]>=2 and mouse_pos[1]<=33:
-            theLevel.objects[mouse_pos[0]][mouse_pos[1]]=cursor_state
+            and mouse_pos[1]>=2 and mouse_pos[1]<=33\
+            and not (mouse_pos[0]==4 and(mouse_pos[1]==32 or mouse_pos[1]==33)):
+            level.objects[mouse_pos[0]][mouse_pos[1]]=cursor_state
         for event in pygame.event.get():
             if event.type==pygame.QUIT: # pylint: disable=maybe-no-member
                 running=False
         pressed=(pressed[1],mouse_press)
-        draw(screen,theLevel)
+        draw(screen,level)
         if state==100:
             running=False
             path1=os.getcwd()
@@ -55,7 +58,7 @@ def run(theLevel: Level, screen):
                 json1 = json.load(jsonfile)
             for i in range(20):
                 if not str(i+1) in json1:
-                    add_level_to_json(theLevel,i+1)
+                    add_level_to_json(level,i+1)
                     break
 
     return 0

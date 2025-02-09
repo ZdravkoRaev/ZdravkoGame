@@ -13,5 +13,5 @@ def dashing(player : Player):
             player.base.x_vel=-6
         if player.base.y_vel<-6:
             player.base.y_vel=-6
-        player.attack_cd=40
+        player.attack_cd=25
     return player

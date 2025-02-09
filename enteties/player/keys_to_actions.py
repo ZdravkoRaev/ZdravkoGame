@@ -24,7 +24,7 @@ def move(player : Player,keys,mouse,mouse_pos):
         if player.attack_lenght<=0:
             player.is_attacking=False
             player.attack_lenght=6
-            player.attack_cd=40
+            player.attack_cd=25
     if player.is_dashing:
         player=dashing(player)
     if keys[pygame.K_d]: # pylint: disable=maybe-no-member

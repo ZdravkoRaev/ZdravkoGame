@@ -5,7 +5,7 @@ from enteties.player.player import Player
 from enteties.player.keys_to_actions import move
 from drawing import draw
 from drawing import drawStart
-from enteties.collisions import collisions_enteties,collysions_with_level,dir_collisions
+from enteties import collisions
 from enteties.enemies.enemyAI.sorter import sort_ai
 def run(level: Level, screen):
     """a"""
@@ -15,8 +15,8 @@ def run(level: Level, screen):
     player=Player()
     enemies=list()
     running=True
-    player.base.bounding_box.x=200
-    player.base.bounding_box.y=200
+    player.base.bounding_box.x=100
+    player.base.bounding_box.y=800
     surface=screen.copy()
     enemies=drawStart(surface,player,level,enemies)
 
@@ -39,33 +39,33 @@ def run(level: Level, screen):
         draw(surface,player,level,enemies)
         for item in enemies:
             if item.hp<=0:
-                enemies.remove(item)
+                enemies.remove(item) # pylint: disable = modified-iterating-list
             new_enemies=sort_ai(player,item)
             item=new_enemies[0]
-            item=dir_collisions(item,level)
+            item=collisions.dir_collisions(item,level)
             if new_enemies[1] is not None:
-                enemies.append(new_enemies[1])
+                enemies.append(new_enemies[1]) # pylint: disable = modified-iterating-list
 
         player=move(player,keys,mouse,mouse_pos)
-        enemy_col=collisions_enteties(player,enemies)
+        enemy_col=collisions.collisions_enteties(player,enemies)
         if player.is_attacking:
             for item in enemies:
                 if player.hurtbox.colliderect(item.base.bounding_box):
                     item.hp-=1
                     if item.hp<=0:
-                        enemies.remove(item)
+                        enemies.remove(item) # pylint: disable = modified-iterating-list
         if enemy_col and player.i_frames<=0:
             player.hp-=1
             player.i_frames=60
         player.i_frames-=1
 
         if player.is_attacking:
-            collisions=collysions_with_level(player.hurtbox,level)
-            for item in collisions:
+            collisions_attack=collisions.collysions_with_level(player.hurtbox,level) # pylint: disable = modified-iterating-list
+            for item in collisions_attack:
                 if level.objects[int(item.x/25)][int(item.y/25)]==2:
                     level.objects[int(item.x/25)][int(item.y/25)]=0
         #gravity
-        player=dir_collisions(player,level)
+        player=collisions.dir_collisions(player,level)
         if player.base.y_vel<10:
             player.base.y_vel+=1
 
@@ -73,7 +73,7 @@ def run(level: Level, screen):
 
         player.wall_jump_box.bounding_box.x=player.base.bounding_box.x-1
         player.wall_jump_box.bounding_box.y=player.base.bounding_box.y+1
-        wall_stuff=collysions_with_level(player.wall_jump_box.bounding_box,level)
+        wall_stuff=collisions.collysions_with_level(player.wall_jump_box.bounding_box,level)
         if   player.base.y_vel>2 and wall_stuff:
             player.base.y_vel=2
             for item in wall_stuff:
