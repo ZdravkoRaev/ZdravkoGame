@@ -14,5 +14,5 @@ class Player:
         self.cad_dash=False
         self.is_dashing=False
         self.attack_lenght=3
-        self.hurtbox=Rect((100,100,50,50))
+        self.hurtbox=Rect((150,150,75,75))
         self.is_attacking=False

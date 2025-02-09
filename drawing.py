@@ -46,14 +46,32 @@ def drawStart(screen,player : Player ,level,enemies):
         pygame.draw.rect(screen,(255,0,0),player.hurtbox)
     return enemies
 
-def draw(screen,player : Player ,level,enemies):
+def draw(screen,player : Player ,level,enemies,frame:int):
     image=pygame.image.load(os.path.join("sprites","enemies","target.png")).convert_alpha()
+    walk1=pygame.image.load(os.path.join("sprites","player","walking","walk1.png")).convert_alpha()
+    walk2=pygame.image.load(os.path.join("sprites","player","walking","walk2.png")).convert_alpha()
+    walk3=pygame.image.load(os.path.join("sprites","player","walking","walk3.png")).convert_alpha()
+    walk4=pygame.image.load(os.path.join("sprites","player","walking","walk4.png")).convert_alpha()
+    walk5=pygame.image.load(os.path.join("sprites","player","walking","walk5.png")).convert_alpha()
+    walk6=pygame.image.load(os.path.join("sprites","player","walking","walk6.png")).convert_alpha()
+    
     pygame.display.update()
     screen.fill((0,0,0))
     if player.hp<=0:
         pygame.draw.rect(screen,(0,100,0),player.base.bounding_box)
     else:
-        pygame.draw.rect(screen,(0,255,0),player.base.bounding_box)
+        if int(frame/3)%6==0:
+            screen.blit(walk1,(player.base.bounding_box.x-7,player.base.bounding_box.y-12))
+        elif int(frame/3)%6==1:
+            screen.blit(walk2,(player.base.bounding_box.x-7,player.base.bounding_box.y-12))
+        elif int(frame/3)%6==2:
+            screen.blit(walk3,(player.base.bounding_box.x-7,player.base.bounding_box.y-12))
+        elif int(frame/3)%6==3:
+            screen.blit(walk4,(player.base.bounding_box.x-7,player.base.bounding_box.y-12))
+        elif int(frame/3)%6==4:
+            screen.blit(walk5,(player.base.bounding_box.x-7,player.base.bounding_box.y-12))
+        else: 
+            screen.blit(walk6,(player.base.bounding_box.x-7,player.base.bounding_box.y-12))
     for item in enemies:
         color=(255,255,255)
         if item.id==1:

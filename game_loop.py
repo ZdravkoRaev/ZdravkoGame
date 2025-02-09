@@ -19,8 +19,10 @@ def run(level: Level, screen):
     player.base.bounding_box.y=800
     surface=screen.copy()
     enemies=drawStart(surface,player,level,enemies)
+    frame=0
 
     while running:
+        frame+=1
         clock.tick(60)
 
 
@@ -36,7 +38,7 @@ def run(level: Level, screen):
 
         surface=screen.copy()
         surface.fill((100, 100, 100))
-        draw(surface,player,level,enemies)
+        draw(surface,player,level,enemies,frame)
         for item in enemies:
             if item.hp<=0:
                 enemies.remove(item) # pylint: disable = modified-iterating-list
