@@ -1,6 +1,8 @@
+"""a"""
 from enteties.collisions.collisions_with_enteties import collysions
 from enteties.template_entety import TempalteEntety
 def dirCollysions(entety : TempalteEntety,level):
+    """a"""
     entety.base.wallBelow=False
     entety.base.wallLeft=False
     entety.base.wallAbove=False
@@ -8,7 +10,7 @@ def dirCollysions(entety : TempalteEntety,level):
     entety.base.boundingBox.x+=entety.base.x_vel
     collisions=collysions(entety.base.boundingBox,level)
 
-            
+
     for item in collisions:
         if entety.base.x_vel>0:
             entety.base.wallRight=True

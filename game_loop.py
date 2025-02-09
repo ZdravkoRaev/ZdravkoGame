@@ -6,8 +6,8 @@ from drawing import draw
 from drawing import drawStart
 from enteties.collisions.collisions_with_enteties import collysions
 from enteties.collisions.directional_collisions import dirCollysions
-from enteties.collisions.collisions_with_level import collisionsEnteties
-from enteties.enemies.enemyAI.sorter import sortAI
+from enteties.collisions.collisions_with_level import collisions_enteties
+from enteties.enemies.enemyAI.sorter import sort_ai
 def run(theLevel: Level, screen):
     x_camera=0
     y_camera=0
@@ -40,14 +40,14 @@ def run(theLevel: Level, screen):
         for item in enemies:
             if item.hp<=0:
                 enemies.remove(item)
-            new_enemies=sortAI(player,item)
+            new_enemies=sort_ai(player,item)
             item=new_enemies[0]
             item=dirCollysions(item,theLevel)
             if new_enemies[1] is not None:
                 enemies.append(new_enemies[1])
 
         player=move(player,keys,mouse,mouse_pos)
-        enemy_col=collisionsEnteties(player,enemies)
+        enemy_col=collisions_enteties(player,enemies)
         if player.isAttacking:
             for item in enemies:
                 if player.hurtbox.colliderect(item.base.boundingBox):

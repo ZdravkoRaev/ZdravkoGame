@@ -1,7 +1,9 @@
+"""a"""
 import pygame
 from enteties.template_entety import TempalteEntety
 
 def collysions(entety : TempalteEntety,level):
+    """a"""
     collisions_with_level=list()
     for x in range(6):
         for y in range(6):
