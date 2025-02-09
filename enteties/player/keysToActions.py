@@ -10,9 +10,11 @@ from enteties.player.playerActions.isDashing import dashing
 from enteties.player.playerActions.hurtboxPosition import hurtPos
 
 def move(player : Player,keys,mouse,mousePos):
-    if player.base.wallBelow and not keys[K_d] and not keys[K_a]:
-        player.base.x_vel*=0.5
+    if player.base.wallBelow:
         player.canDash=True
+        if not keys[K_d] and not keys[K_a]:
+            player.base.x_vel*=0.5
+
     if player.base.wallLeft or player.base.wallRight:
         player.canDash=True
 
