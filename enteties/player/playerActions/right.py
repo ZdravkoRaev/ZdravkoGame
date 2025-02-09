@@ -1,5 +1,5 @@
 from enteties.player.player import Player
-def moveRight(player : Player):
+def move_right(player : Player):
     if player.base.wallBelow:
         if player.base.x_vel<6:
             player.base.x_vel+=2

@@ -75,7 +75,6 @@ def draw(screen,player : Player ,level,enemies):
         pygame.draw.rect(screen,(0,100,0),player.base.boundingBox)
     else:
         pygame.draw.rect(screen,(0,255,0),player.base.boundingBox)
-    
     for item in enemies:
         color=(255,255,255)
         if item.ID==1:
@@ -106,9 +105,6 @@ def draw(screen,player : Player ,level,enemies):
                 level.objects[x][y]=0
             if level.objects[x][y]==5:
                 level.objects[x][y]=0
-
-                
-
 
     for x in range(64):
         for y in range(36):

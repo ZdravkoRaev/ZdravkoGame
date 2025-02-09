@@ -2,7 +2,7 @@
 import pygame
 from menus.button import Button
 
-def renderButton(button1: Button, bg, state : int, pressed,mouse_x: int,mouse_y: int):
+def render_button(button1: Button, bg, state : int, pressed,mouse_x: int,mouse_y: int):
     """function"""
     pygame.font.init()
     font1 = pygame.font.Font(None, 24)
@@ -34,5 +34,5 @@ def renderButton(button1: Button, bg, state : int, pressed,mouse_x: int,mouse_y:
             button1.lenght, button1.height)
             )
             bg.blit(button_text, button_text_rect)
-            return button1.actionID
+            return button1.actions_ID
     return state

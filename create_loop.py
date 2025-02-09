@@ -3,7 +3,7 @@ import os
 import pygame
 from levelCreator.level import Level
 from drawing_level import draw
-from menus.button_creator import renderButton
+from menus.button_creator import render_button
 from menus.button import Button
 from levels.converter import addLevelToJson
 
@@ -19,21 +19,21 @@ def run(theLevel: Level, screen):
         clock.tick(60)
         mouse_pos=list(pygame.mouse.get_pos())
         mouse_press=pygame.mouse.get_pressed()[0]
-        state=renderButton(Button\
+        state=render_button(Button\
         (1200,850,300,50,"SaveLevel",100),screen,state,pressed,mouse_pos[0], mouse_pos[1])
-        cursor_state=renderButton\
+        cursor_state=render_button\
             (Button(100,850,50,50,"Air",0),screen,cursor_state,pressed,mouse_pos[0], mouse_pos[1])
-        cursor_state=renderButton(Button\
+        cursor_state=render_button(Button\
         (200,850,50,50,"wall",1),screen,cursor_state,pressed,mouse_pos[0], mouse_pos[1])
-        cursor_state=renderButton(Button\
+        cursor_state=render_button(Button\
         (300,850,50,50,"Break",2),screen,cursor_state,pressed,mouse_pos[0], mouse_pos[1])
-        cursor_state=renderButton(Button\
+        cursor_state=render_button(Button\
         (400,850,50,50,"En1",3),screen,cursor_state,pressed,mouse_pos[0], mouse_pos[1])
-        cursor_state=renderButton(Button\
+        cursor_state=render_button(Button\
         (500,850,50,50,"En2",4),screen,cursor_state,pressed,mouse_pos[0], mouse_pos[1])
-        cursor_state=renderButton(Button\
+        cursor_state=render_button(Button\
         (600,850,50,50,"Proj",5),screen,cursor_state,pressed,mouse_pos[0], mouse_pos[1])
-        cursor_state=renderButton(Button\
+        cursor_state=render_button(Button\
         (700,850,50,50,"Target",6),screen,cursor_state,pressed,mouse_pos[0], mouse_pos[1])
         mouse_pos[0]=int((mouse_pos[0]-mouse_pos[0]%25)/25)
         mouse_pos[1]=int((mouse_pos[1]-mouse_pos[1]%25)/25)

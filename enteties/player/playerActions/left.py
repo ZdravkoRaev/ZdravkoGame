@@ -1,5 +1,7 @@
+"""moveing left logic"""
 from enteties.player.player import Player
-def moveLeft(player : Player):
+def move_left(player : Player):
+    """logic"""
     if player.base.wallBelow:
         if player.base.x_vel>-6:
             player.base.x_vel+=-2

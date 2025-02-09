@@ -2,12 +2,12 @@
 import pygame
 from enteties.player.player import Player
 
-from enteties.player.playerActions.left import moveLeft
-from enteties.player.playerActions.right import moveRight
+from enteties.player.playerActions.left import move_left
+from enteties.player.playerActions.right import move_right
 from enteties.player.playerActions.jumping import jump1
 from enteties.player.playerActions.attack import attack
 from enteties.player.playerActions.is_dashing import dashing
-from enteties.player.playerActions.hurtbox_pos import hurtPos
+from enteties.player.playerActions.hurtbox_pos import hurt_pos
 
 def move(player : Player,keys,mouse,mousePos):
     """thee function"""
@@ -28,15 +28,15 @@ def move(player : Player,keys,mouse,mousePos):
     if player.isDashing:
         player=dashing(player)
     if keys[pygame.K_d]: # pylint: disable=maybe-no-member
-        player=moveRight(player)
+        player=move_right(player)
     if keys[pygame.K_a]: # pylint: disable=maybe-no-member
-        player=moveLeft(player)
+        player=move_left(player)
     if  keys[pygame.K_SPACE]: # pylint: disable=maybe-no-member
         player=jump1(player)
     if mouse[2] and player.attackCooldown<0:
         player=attack(player,mousePos)
     player.attackCooldown-=1
-    player=hurtPos(player,mousePos)
+    player=hurt_pos(player,mousePos)
 
 
     return player

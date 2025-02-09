@@ -1,6 +1,6 @@
 import math
 from enteties.player.player import Player
-def hurtPos(player : Player,mouse_pos):   
+def hurt_pos(player : Player,mouse_pos):   
     x=mouse_pos[0]-player.base.boundingBox.x
     y=mouse_pos[1]-player.base.boundingBox.y
     lenght=math.sqrt(x*x+y*y)
