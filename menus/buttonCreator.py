@@ -12,7 +12,7 @@ def renderButton(button1: Button, bg, state : int, pressed,mouse_x: int,mouse_y:
     button = pygame.draw.rect(
         bg,
         button1.color,
-        (button1.x, button1.y, 
+        (button1.x, button1.y,
         button1.lenght, button1.height),
     )
     bg.blit(button_text, button_text_rect)
@@ -21,7 +21,7 @@ def renderButton(button1: Button, bg, state : int, pressed,mouse_x: int,mouse_y:
         button = pygame.draw.rect(
         bg,
         button1.colorOnHover,
-        (button1.x, button1.y, 
+        (button1.x, button1.y,
         button1.lenght, button1.height),
     )
         bg.blit(button_text, button_text_rect)
@@ -29,7 +29,7 @@ def renderButton(button1: Button, bg, state : int, pressed,mouse_x: int,mouse_y:
             button = pygame.draw.rect(
             bg,
             button1.colorOnClick,
-            (button1.x, button1.y, 
+            (button1.x, button1.y,
             button1.lenght, button1.height)
             )
             bg.blit(button_text, button_text_rect)
