@@ -1,4 +1,4 @@
-
+"""a"""
 #To do: make it only draw, not also update enemies
 import os
 import pygame
@@ -9,6 +9,7 @@ from enteties.enemies import projectile
 from enteties.enemies import target
 
 def drawStart(screen,player : Player ,level,enemies):
+    """a"""
     pygame.display.update()
     screen.fill((0,0,0))
     for x in range(64):

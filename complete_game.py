@@ -1,3 +1,4 @@
+"""a"""
 from menus import menu
 RUNNING=True
 while RUNNING:

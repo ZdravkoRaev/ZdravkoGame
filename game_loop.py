@@ -1,3 +1,4 @@
+"""a"""
 import pygame
 from levelCreator.level import Level
 from enteties.player.player import Player
@@ -9,6 +10,7 @@ from enteties.collisions.directional_collisions import dirCollysions
 from enteties.collisions.collisions_with_level import collisions_enteties
 from enteties.enemies.enemyAI.sorter import sort_ai
 def run(theLevel: Level, screen):
+    """a"""
     x_camera=0
     y_camera=0
     clock = pygame.time.Clock()
