@@ -1,5 +1,5 @@
 #chases the player if the player is too close. Deals damage on touch
-from enteties.baseEntety import BaseEntety
+from enteties.base_entety import BaseEntety
 from enteties.player.player import Player
 from math import sqrt
 class BasicFlier():

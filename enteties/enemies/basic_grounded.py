@@ -1,5 +1,5 @@
 #goes left and right. Deals damage on touch.
-from enteties.baseEntety import BaseEntety
+from enteties.base_entety import BaseEntety
 class basicFlier():
     def __init__(self):
         self.hp=1

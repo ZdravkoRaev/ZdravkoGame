@@ -1,5 +1,5 @@
 from enteties.collisions.collisions_with_enteties import collysions
-from enteties.templateEntety import TempalteEntety
+from enteties.template_entety import TempalteEntety
 def dirCollysions(entety : TempalteEntety,level):
     entety.base.wallBelow=False
     entety.base.wallLeft=False

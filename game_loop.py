@@ -1,7 +1,7 @@
 import pygame
 from levelCreator.level import Level
 from enteties.player.player import Player
-from enteties.player.keysToActions import move
+from enteties.player.keys_to_actions import move
 from drawing import draw
 from drawing import drawStart
 from enteties.collisions.collisions_with_enteties import collysions

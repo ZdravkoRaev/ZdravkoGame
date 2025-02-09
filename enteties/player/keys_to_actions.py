@@ -6,8 +6,8 @@ from enteties.player.playerActions.left import moveLeft
 from enteties.player.playerActions.right import moveRight
 from enteties.player.playerActions.jumping import jump1
 from enteties.player.playerActions.attack import attack
-from enteties.player.playerActions.isDashing import dashing
-from enteties.player.playerActions.hurtboxPosition import hurtPos
+from enteties.player.playerActions.is_dashing import dashing
+from enteties.player.playerActions.hurtbox_pos import hurtPos
 
 def move(player : Player,keys,mouse,mousePos):
     """thee function"""

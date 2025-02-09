@@ -1,5 +1,5 @@
 #stands in place in the air and shoots the player
-from enteties.baseEntety import BaseEntety
+from enteties.base_entety import BaseEntety
 from enteties.player.player import Player
 from enteties.enemies.projectile import Projectile
 from math import sqrt

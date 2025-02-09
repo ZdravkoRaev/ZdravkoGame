@@ -1,4 +1,4 @@
-from enteties.baseEntety import BaseEntety
+from enteties.base_entety import BaseEntety
 class Projectile():
     def __init__(self):
         self.hp=1

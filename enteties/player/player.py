@@ -1,5 +1,5 @@
 from pygame import Rect
-from enteties.baseEntety import BaseEntety
+from enteties.base_entety import BaseEntety
 class Player:
     def __init__(self):
         self.base=BaseEntety(25,50)

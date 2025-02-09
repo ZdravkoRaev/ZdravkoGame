@@ -3,8 +3,8 @@
 import os
 import pygame
 from enteties.player.player import Player
-from enteties.enemies import basicFlier
-from enteties.enemies import shootyFlier
+from enteties.enemies import basic_flier
+from enteties.enemies import shooty_flier
 from enteties.enemies import projectile
 from enteties.enemies import target
 
@@ -36,13 +36,13 @@ def drawStart(screen,player : Player ,level,enemies):
                 a=pygame.Rect((x*25,y*25,25,25))
                 pygame.draw.rect(screen,(0,255,255),a)
             if level.objects[x][y]==3:
-                enemy=basicFlier.BasicFlier()
+                enemy=basic_flier.BasicFlier()
                 enemy.base.boundingBox.x=x*25
                 enemy.base.boundingBox.y=y*25
                 enemies.append(enemy)
                 level.objects[x][y]=0
             if level.objects[x][y]==4:
-                enemy=shootyFlier.ShootyFlier()
+                enemy=shooty_flier.ShootyFlier()
                 enemy.base.boundingBox.x=x*25
                 enemy.base.boundingBox.y=y*25
                 enemies.append(enemy)

@@ -1,4 +1,4 @@
-from enteties.templateEntety import TempalteEntety
+from enteties.template_entety import TempalteEntety
 
 def collisionsEnteties(entety1 :TempalteEntety,allEnteties):
     collis_ent=list()

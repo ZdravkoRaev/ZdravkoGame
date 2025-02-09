@@ -1,7 +1,6 @@
 import math
 from enteties.player.player import Player
 def hurtPos(player : Player,mousePos):   
-    player.attackCooldown-=1
     x=mousePos[0]-player.base.boundingBox.x
     y=mousePos[1]-player.base.boundingBox.y
     lenght=math.sqrt(x*x+y*y)
